@@ -1,0 +1,7 @@
+{
+  "webDriverName": "webdriver.chrome.driver",
+  "webDriverFile": "/home/cc/Desktop/Programming/Repos/screenshotter/assets/chromedriver",
+
+  "threads": 4,
+  "waitForRenderingInMs": 500
+}
