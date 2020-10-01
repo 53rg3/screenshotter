@@ -1,6 +1,7 @@
 package core;
 
 import akka.actor.typed.Behavior;
+import akka.actor.typed.MailboxSelector;
 import akka.actor.typed.javadsl.AbstractBehavior;
 import akka.actor.typed.javadsl.ActorContext;
 import akka.actor.typed.javadsl.Behaviors;
@@ -96,7 +97,8 @@ public class ManagingActor extends AbstractBehavior<ManagingActorCommand> {
 
             this.getContext().spawn(
                     ScreenShotActor.create(this.csvRows.poll(), this.config, webDriver, this.getContext().getSelf()),
-                    UUID.randomUUID().toString());
+                    UUID.randomUUID().toString(),
+                    MailboxSelector.fromConfig("screenshotter.screenshot-mailbox"));
 
             webDriver = this.webDrivers.poll();
         }
